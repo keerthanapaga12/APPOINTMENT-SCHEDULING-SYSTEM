@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Scheduling System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="topbar">
+        <a href="#home" class="brand">
+            <span class="brand-mark">A</span>
+            AppointmentPro
+        </a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#booking">Book Appointment</a>
+            <a href="#appointments">My Appointments</a>
+            <button type="button" id="logoutBtn" class="button button-outline hidden">
+                Logout
+            </button>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- Home -->
+        <section id="home" class="hero">
+            <div>
+                <p class="eyebrow">Simple • Smart • Convenient</p>
+                <h1>Schedule Your <span>Appointments</span> Easily</h1>
+                <p class="hero-copy">
+                    Book appointments online, select your preferred service,
+                    choose an available time slot, and manage your bookings
+                    in one place.
+                </p>
+                <a href="#booking" class="button">Book an Appointment</a>
+                <a href="#services" class="button button-outline">Explore Services</a>
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-icon">📅</div>
+                <h2>Appointment Scheduling System</h2>
+                <p class="muted">
+                    Manage bookings and availability with a simple,
+                    user-friendly platform.
+                </p>
+                <hr>
+                <h3>Upcoming Appointment</h3>
+                <p id="nextAppointment">
+                    Log in to manage your appointments.
+                </p>
+            </div>
+        </section>
+
+        <!-- About Project -->
+        <section id="about" class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">About Our Project</p>
+                    <h2>Appointment Scheduling System</h2>
+                </div>
+            </div>
+
+            <p>
+                The Appointment Scheduling System is a reusable web application
+                designed for businesses and professionals. Users can select a
+                service, choose a date, and book an available time slot. Staff
+                can manage availability, confirm or cancel appointments, and
+                review upcoming bookings.
+            </p>
+
+            <br>
+
+            <h3>Objectives</h3>
+            <ul>
+                <li>Provide online appointment booking.</li>
+                <li>Display available services and time slots.</li>
+                <li>Help staff manage appointments and schedules.</li>
+                <li>Reduce manual scheduling and booking conflicts.</li>
+                <li>Store appointment information in a database.</li>
+            </ul>
+
+            <br>
+
+            <h3>Technologies Used</h3>
+            <p><strong>Frontend:</strong> HTML, CSS, JavaScript</p>
+            <p><strong>Backend:</strong> Node.js and Express.js</p>
+            <p><strong>Database:</strong> Supabase PostgreSQL</p>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">What We Offer</p>
+                    <h2>Our Services</h2>
+                </div>
+                <p class="muted">Choose a service to start booking.</p>
+            </div>
+
+            <div class="service-grid">
+                <article class="service-card">
+                    <div class="service-icon">🩺</div>
+                    <h3>General Consultation</h3>
+                    <p class="muted">Schedule a general consultation.</p>
+                    <p><strong>Duration:</strong> 30 minutes</p>
+                    <br>
+                    <button type="button" class="button service-book"
+                        data-service-name="General Consultation">
+                        Book Now
+                    </button>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>Professional Consultation</h3>
+                    <p class="muted">Arrange a professional meeting.</p>
+                    <p><strong>Duration:</strong> 45 minutes</p>
+                    <br>
+                    <button type="button" class="button service-book"
+                        data-service-name="Professional Consultation">
+                        Book Now
+                    </button>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>Personal Meeting</h3>
+                    <p class="muted">Schedule a personal meeting.</p>
+                    <p><strong>Duration:</strong> 30 minutes</p>
+                    <br>
+                    <button type="button" class="button service-book"
+                        data-service-name="Personal Meeting">
+                        Book Now
+                    </button>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>Follow-up Appointment</h3>
+                    <p class="muted">Book a follow-up session.</p>
+                    <p><strong>Duration:</strong> 15 minutes</p>
+                    <br>
+                    <button type="button" class="button service-book"
+                        data-service-name="Follow-up Appointment">
+                        Book Now
+                    </button>
+                </article>
+            </div>
+        </section>
+
+        <!-- Login and Registration -->
+        <section id="account" class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Your Account</p>
+                    <h2>Login or Register</h2>
+                </div>
+            </div>
+
+            <div class="auth-grid">
+                <div id="loginSection" class="form-card">
+                    <h3>Login</h3>
+                    <form id="loginForm">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" name="email"
+                            placeholder="Enter your email" required>
+
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" name="password"
+                            placeholder="Enter your password" required>
+
+                        <button type="submit" class="button">Login</button>
+                    </form>
+                </div>
+
+                <div id="registerSection" class="form-card">
+                    <h3>Create an Account</h3>
+                    <form id="registerForm">
+                        <label for="registerName">Full Name</label>
+                        <input type="text" id="registerName" name="name"
+                            placeholder="Enter your full name" required>
+
+                        <label for="registerEmail">Email Address</label>
+                        <input type="email" id="registerEmail" name="email"
+                            placeholder="Enter your email" required>
+
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" name="password"
+                            placeholder="Create a password" minlength="8" required>
+
+                        <button type="submit" class="button">Register</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking -->
+        <section id="booking" class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Reserve Your Time</p>
+                    <h2>Book an Appointment</h2>
+                </div>
+            </div>
+
+            <p class="muted">
+                Select a service, appointment date, and available time slot.
+                Log in to submit your booking.
+            </p>
+
+            <br>
+
+            <form id="bookingForm">
+                <div class="booking-grid">
+                    <label for="serviceSelect">
+                        Select Service
+                        <select id="serviceSelect" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="General Consultation">General Consultation</option>
+                            <option value="Professional Consultation">Professional Consultation</option>
+                            <option value="Personal Meeting">Personal Meeting</option>
+                            <option value="Follow-up Appointment">Follow-up Appointment</option>
+                        </select>
+                    </label>
+
+                    <label for="dateInput">
+                        Appointment Date
+                        <input type="date" id="dateInput" name="date" required>
+                    </label>
+
+                    <label for="slotSelect">
+                        Available Time Slot
+                        <select id="slotSelect" name="slot" required>
+                            <option value="">Select service and date first</option>
+                        </select>
+                        <small id="slotHelp" class="muted">
+                            Available time slots will appear here.
+                        </small>
+                    </label>
+
+                    <button type="submit" class="button">
+                        Confirm Appointment
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Staff Dashboard -->
+        <section id="staffPanel" class="panel hidden">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Staff Dashboard</p>
+                    <h2>Manage Availability</h2>
+                </div>
+            </div>
+
+            <p class="muted">
+                Add available dates and time ranges for customer bookings.
+            </p>
+
+            <br>
+
+            <form id="slotForm">
+                <div class="booking-grid">
+                    <label for="staffServiceSelect">
+                        Service
+                        <select id="staffServiceSelect" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="General Consultation">General Consultation</option>
+                            <option value="Professional Consultation">Professional Consultation</option>
+                            <option value="Personal Meeting">Personal Meeting</option>
+                            <option value="Follow-up Appointment">Follow-up Appointment</option>
+                        </select>
+                    </label>
+
+                    <label for="staffDate">
+                        Available Date
+                        <input type="date" id="staffDate" name="date" required>
+                    </label>
+
+                    <label for="startTime">
+                        Start Time
+                        <input type="time" id="startTime" name="startTime" required>
+                    </label>
+
+                    <label for="endTime">
+                        End Time
+                        <input type="time" id="endTime" name="endTime" required>
+                    </label>
+
+                    <button type="submit" class="button">Add Availability</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Appointments -->
+        <section id="appointments" class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Booking Management</p>
+                    <h2>My Appointments</h2>
+                </div>
+
+                <button type="button" id="refreshBtn" class="button button-outline">
+                    Refresh
+                </button>
+            </div>
+
+            <p class="muted">
+                View your bookings and cancel appointments when permitted.
+            </p>
+
+            <br>
+
+            <div id="appointmentsList" class="appointment-list">
+                <p class="empty">Please log in to view your appointments.</p>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Easy Process</p>
+                    <h2>How It Works</h2>
+                </div>
+            </div>
+
+            <ol>
+                <li>Create an account or log in.</li>
+                <li>Select your preferred service.</li>
+                <li>Choose an appointment date.</li>
+                <li>Select an available time slot.</li>
+                <li>Confirm your appointment.</li>
+                <li>View and manage your bookings.</li>
+            </ol>
+        </section>
+
+        <!-- Notifications -->
+        <div id="notice" class="notice hidden" role="status" aria-live="polite"></div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <h3>AppointmentPro</h3>
+        <p>Appointment Scheduling System</p>
+        <p>Making appointment booking simple, organized, and convenient.</p>
+        <p>&copy; 2026 Appointment Scheduling System. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

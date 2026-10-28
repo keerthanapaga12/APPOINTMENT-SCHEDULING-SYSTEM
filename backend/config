@@ -1,0 +1,22 @@
+// backend/config/config.js
+
+require("dotenv").config();
+
+const config = {
+    port: process.env.PORT || 5000,
+    nodeEnv: process.env.NODE_ENV || "development",
+
+    supabase: {
+        url: process.env.SUPABASE_URL,
+        anonKey: process.env.SUPABASE_ANON_KEY
+    }
+};
+
+// Validate required environment variables
+if (!config.supabase.url || !config.supabase.anonKey) {
+    throw new Error(
+        "Missing Supabase configuration. Check your backend .env file."
+    );
+}
+
+module.exports = config;
